@@ -4,6 +4,35 @@ import './App.css';
 function App() {
   const [layout, setLayout] = useState('full');
   const [theme, setTheme] = useState('dark');
+  const [formData, setFormData] = useState({
+    nama: '',
+    email: '',
+    pesan: ''
+  });
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    
+    const { nama, email, pesan } = formData;
+    if (!nama || !email || !pesan) {
+      alert('Mohon isi semua field');
+      return;
+    }
+    
+    const message = `Halo, nama saya ${nama}. Email: ${email}. Pesan: ${pesan}`;
+    const waLink = `https://wa.me/6281234567890?text=${encodeURIComponent(message)}`;
+    window.open(waLink, '_blank');
+    
+    setFormData({ nama: '', email: '', pesan: '' });
+  };
 
   const services = [
     {icon: '💡', title: 'Solusi Digital', text: 'Pengembangan software custom, aplikasi web dan mobile.'},
@@ -130,21 +159,42 @@ function App() {
         <div className="contact-wrapper">
           <div className="contact-form floating-card">
             <h3>Kirimi kami pesan</h3>
-            <form>
+            <form onSubmit={handleFormSubmit}>
               <label>
                 Nama
-                <input type="text" placeholder="Nama Anda" />
+                <input 
+                  type="text" 
+                  name="nama"
+                  placeholder="Nama Anda" 
+                  value={formData.nama}
+                  onChange={handleFormChange}
+                  required
+                />
               </label>
               <label>
                 Email
-                <input type="email" placeholder="email@contoh.com" />
+                <input 
+                  type="email" 
+                  name="email"
+                  placeholder="email@contoh.com" 
+                  value={formData.email}
+                  onChange={handleFormChange}
+                  required
+                />
               </label>
               <label>
                 Pesan
-                <textarea rows="4" placeholder="Tuliskan kebutuhan IT Anda" />
+                <textarea 
+                  rows="4" 
+                  name="pesan"
+                  placeholder="Tuliskan kebutuhan IT Anda" 
+                  value={formData.pesan}
+                  onChange={handleFormChange}
+                  required
+                />
               </label>
               <button type="submit" className="cta">
-                Kirim Pesan
+                Kirim Pesan via WhatsApp
               </button>
             </form>
           </div>

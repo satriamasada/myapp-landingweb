@@ -329,9 +329,9 @@ function App() {
           ))}
         </div>
         {orderStatus && <p className="order-status">{orderStatus}</p>}
-        <p className="section-desc" style={{ marginTop: '0.8rem', fontSize: '0.9rem' }}>
+        {/* <p className="section-desc" style={{ marginTop: '0.8rem', fontSize: '0.9rem' }}>
           Untuk integrasi penuh, siapkan endpoint backend `/api/midtrans/create-transaction` yang mengembalikan `token` Snap.
-        </p>
+        </p> */}
       </section>
 
       <section className="section parallax" id="contact">

@@ -478,6 +478,34 @@ a {
   padding: 2rem;
 }
 
+#pricing .card ul {
+  padding-left: 1.1rem;
+  margin: 0.3rem 0 0.8rem;
+  color: var(--muted);
+}
+
+#pricing .card li {
+  margin-bottom: 0.45rem;
+}
+
+#pricing .price {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0.8rem 0;
+}
+
+.order-status {
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  color: var(--primary);
+  padding: 0.7rem 1rem;
+  border-radius: 0.8rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+
 .light-theme #portfolio {
   background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
   padding: 2rem;

@@ -1,70 +1,614 @@
-# Getting Started with Create React App
+# Mitra Semesta Persada - Landing Page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Situs web landing page profesional untuk **Mitra Semesta Persada**, perusahaan software dan teknologi informasi. Website ini menampilkan layanan, portfolio, dan produk kami dengan desain modern, responsif, dan interaktif dengan dukungan tema gelap/terang.
 
-## Available Scripts
+## 📋 Daftar Isi
 
-In the project directory, you can run:
+- [Fitur Utama](#fitur-utama)
+- [Tech Stack](#tech-stack)
+- [Struktur Proyek](#struktur-proyek)
+- [Instalasi & Setup](#instalasi--setup)
+- [Cara Menjalankan](#cara-menjalankan)
+- [Konfigurasi](#konfigurasi)
+- [Dokumentasi Fitur](#dokumentasi-fitur)
+- [Responsivitas](#responsivitas)
+- [Animasi & Efek](#animasi--efek)
+- [Deployment](#deployment)
+- [Browser Support](#browser-support)
+- [FAQ](#faq)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Fitur Utama
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. **Tema Light/Dark Mode**
+- Toggle antara tema terang dan gelap dengan tombol di navbar
+- Palet warna yang berbeda untuk setiap mode:
+  - **Light Mode**: Background terang (#f8fafc), text gelap (#0f172a)
+  - **Dark Mode**: Background gelap (#020617), text terang (#e2eaf7)
+- Preferensi tersimpan selama sesi pengguna
 
-### `npm test`
+### 2. **Layout Toggle (Fullscreen/Boxed)**
+- Dua mode layout:
+  - **Fullscreen**: Konten memenuhi lebar layar 100%
+  - **Boxed**: Konten terbatas pada max-width 1080px dengan shadow effect
+- Tombol toggle di navbar untuk pengalaman pengguna optimal
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. **Parallax Scrolling**
+- Efek parallax modern-retro pada setiap section
+- Background tetap saat scroll menggunakan `background-attachment: fixed`
+- Overlay gradient gelap untuk kontras teks yang lebih baik
 
-### `npm run build`
+### 4. **Animasi Floating Cards**
+- Kartu layanan, portfolio, dan produk bergerak naik-turun
+- Animasi smooth 2 detik dengan infinite loop
+- Total 18 kartu (6 per section × 3 section)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 5. **Typing Animation (Hero Section)**
+- Teks judul utama menampilkan efek typing otomatis
+- Kusor berkedip untuk pengalaman pengguna yang menarik
+- Durasi 3 detik untuk keseluruhan animasi
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 6. **Integrasi WhatsApp**
+- Form kontak terhubung langsung ke WhatsApp Business
+- Field: Nama, Email, Pesan
+- Routing otomatis ke +6281234567890
+- Pesan terformat profesional dengan data pengguna
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 7. **Embedded Google Maps**
+- Peta lokasi kantor terintegrasi di section kontak
+- Aspek rasio 16:9 responsif
+- Ikon lokasi animasi pulse di navbar
 
-### `npm run eject`
+### 8. **Responsive Design**
+- Optimal untuk desktop, tablet, dan mobile
+- Breakpoints 980px (tablet) dan 640px (mobile)
+- Grid layout otomatis: 3 kolom → 2 kolom → 1 kolom
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 9. **Navbar Fixed**
+- Menu sticky di atas halaman
+- 2 tombol toggle: Layout (expand/compress) + Tema (sun/moon)
+- Ikon FontAwesome 6.4.0 CDN
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 10. **Sections Komprehensif**
+- **Hero**: Typing animation, deskripsi brand
+- **About**: Tentang perusahaan dengan 6 kartu fitur
+- **Services**: 6 layanan dengan ikon dan deskripsi
+- **Portfolio**: 6 proyek klien terkemuka
+- **Products**: 6 produk unggulan Mitra Semesta Persada
+- **Contact**: Form kontak + peta + info lokasi
+- **Footer**: Copyright dan komitmen kualitas
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🛠️ Tech Stack
 
-## Learn More
+| Teknologi         | Versi   | Penggunaan |
+|------------------|---------|-----------|
+| **React**        | 18.x    | Framework utama |
+| **JavaScript**   | ES6+    | Bahasa pemrograman |
+| **CSS3**         | -       | Styling dan animasi |
+| **FontAwesome**  | 6.4.0   | Icon library (CDN) |
+| **Create React App** | 5.x  | Build tool |
+| **Node.js**      | 14+     | Development environment |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**External Services:**
+- Google Maps (iframe embed)
+- WhatsApp API (wa.me protocol)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 📁 Struktur Proyek
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+myapp-landingweb/
+├── public/
+│   ├── index.html           # HTML entry point + FontAwesome CDN
+│   ├── manifest.json        # PWA manifest
+│   ├── robots.txt          # SEO robots configuration
+│   └── favicon.ico
+├── src/
+│   ├── App.js              # Main React component (seluruh landing page)
+│   ├── App.css             # Stylesheet lengkap dengan animasi
+│   ├── index.js            # React DOM mount point
+│   ├── index.css           # Global styles
+│   ├── App.test.js         # Test suite
+│   ├── reportWebVitals.js  # Performance monitoring
+│   └── setupTests.js       # Test configuration
+├── package.json            # Dependencies dan scripts
+├── README.md              # Dokumentasi ini
+└── build/                 # Production build (generated by npm run build)
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📦 Instalasi & Setup
 
-### Making a Progressive Web App
+### Prerequisites
+- **Node.js** versi 14 atau lebih tinggi
+- **npm** versi 6 atau lebih tinggi (termasuk dengan Node.js)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Langkah-Langkah Instalasi
 
-### Advanced Configuration
+1. **Clone atau download repository**
+   ```bash
+   git clone <repository-url>
+   cd myapp-landingweb
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+   Ini akan menginstall React, ReactDOM, dan dependencies lainnya dari `package.json`.
 
-### Deployment
+3. **Verifikasi instalasi**
+   ```bash
+   npm start
+   ```
+   Browser akan membuka `http://localhost:3000` secara otomatis.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 🚀 Cara Menjalankan
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Development Mode
+```bash
+npm start
+```
+- Membuka aplikasi di `http://localhost:3000`
+- Auto-reload ketika ada perubahan file
+- Menampilkan console errors dan warnings
+
+### Build Production
+```bash
+npm run build
+```
+- Membuat optimized production build di folder `build/`
+- File ter-minify dan di-hash untuk caching
+- Output size: ~63.52 kB (gzipped)
+
+### Running Tests
+```bash
+npm test
+```
+- Membuka test runner dalam interactive watch mode
+- Menjalankan semua test files yang match `*.test.js`
+
+---
+
+## ⚙️ Konfigurasi
+
+### 1. Mengubah Nomor WhatsApp
+
+Edit file [src/App.js](src/App.js) cari function `handleFormSubmit`:
+
+```javascript
+const handleFormSubmit = (e) => {
+  e.preventDefault();
+  const msg = `Halo, nama saya ${formData.name}. Email: ${formData.email}. Pesan: ${formData.message}`;
+  // Ubah nomor di bawah:
+  window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(msg)}`);
+  setFormData({name: '', email: '', message: ''});
+};
+```
+
+**Ganti `6281234567890` dengan nomor WhatsApp yang diinginkan** (awali dengan +62, tanpa spasi atau karakter special).
+
+### 2. Mengubah Konten Sections
+
+Semua konten berada di [src/App.js](src/App.js) dalam bentuk array JavaScript:
+
+**Services** (6 layanan):
+```javascript
+const services = [
+  {icon: '💡', title: 'Solusi Digital', text: 'Transformasi digital penuh untuk bisnis Anda'},
+  // ... 5 item lainnya
+];
+```
+
+**Portfolio** (6 proyek):
+```javascript
+const portfolio = [
+  {title: 'ERP System', text: 'Implementasi sistem ERP terintegrasi untuk manufaktur'},
+  // ... 5 item lainnya
+];
+```
+
+**Products** (6 produk):
+```javascript
+const products = [
+  {title: 'MitraBI', text: 'Suite business intelligence dengan dashboard real-time'},
+  // ... 5 item lainnya
+];
+```
+
+### 3. Mengubah Warna Tema
+
+Edit file [src/App.css](src/App.css) dan ubah CSS Variables:
+
+**Light Theme:**
+```css
+.light-theme {
+  --bg: #f8fafc;           /* Background utama */
+  --card: #ffffff;         /* Background kartu */
+  --text: #0f172a;         /* Warna text */
+  --muted: #64748b;        /* Warna muted/secondary */
+  --primary: #2563eb;      /* Warna primary */
+  --primary-dark: #1e40af; /* Warna primary gelap */
+  --border: #e2e8f0;       /* Border color */
+}
+```
+
+**Dark Theme:**
+```css
+.dark-theme {
+  --bg: #020617;
+  --card: rgba(15,23,42,0.9);
+  --text: #e2eaf7;
+  /* ... variable lainnya */
+}
+```
+
+### 4. Mengubah Lokasi Google Maps
+
+Di [src/App.js](src/App.js), cari iframe Google Maps dan ubah URL:
+
+```html
+<iframe src="https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE" ...></iframe>
+```
+
+Dapatkan embed code dari Google Maps: https://maps.google.com → Share/Embed
+
+### 5. Mengubah Konten Hero Section
+
+Edit teks typing animation di [src/App.js](src/App.js):
+
+```javascript
+<h1>Mitra Semesta Persada</h1>
+<p>Solusi Teknologi Terdepan untuk Transformasi Digital Bisnis Anda</p>
+```
+
+---
+
+## 📚 Dokumentasi Fitur
+
+### Theme System
+
+**File**: [src/App.js](src/App.js) (lines: state), [src/App.css](src/App.css) (lines: variables)
+
+**Mekanisme**:
+1. State `theme` menyimpan 'light' atau 'dark'
+2. Tombol toggle mengubah state: `setTheme(theme === 'dark' ? 'light' : 'dark')`
+3. Class `.light-theme` atau `.dark-theme` diterapkan ke root element
+4. CSS Variables di-override berdasarkan class selector
+5. Semua child elements mewarisi CSS Variables
+
+**Implementasi**:
+```jsx
+<div style={{...}} className={`${theme}-theme`}>
+  {/* Content akan menggunakan warna dari CSS Variables */}
+</div>
+```
+
+### Layout System
+
+**File**: [src/App.js](src/App.js) (lines: state), [src/App.css](src/App.css) (lines: .full-layout, .boxed-layout)
+
+**Mekanisme**:
+1. State `layout` menyimpan 'full' atau 'boxed'
+2. Toggle button mengubah state: `setLayout(layout === 'full' ? 'boxed' : 'full')`
+3. Class `.full-layout` atau `.boxed-layout` diterapkan ke container
+4. Full-layout: max-width 100%, padding 0 (true fullscreen)
+5. Boxed-layout: max-width 1080px, margin auto, box-shadow (centered dengan shadow)
+
+### WhatsApp Integration
+
+**File**: [src/App.js](src/App.js) (function `handleFormSubmit`)
+
+**Flow**:
+1. User mengisi form (nama, email, pesan)
+2. Submit button trigger `handleFormSubmit()`
+3. Function membuat message dengan format: `Halo, nama saya {name}. Email: {email}. Pesan: {message}`
+4. URL encode message menggunakan `encodeURIComponent()`
+5. Buka WhatsApp API: `https://wa.me/{PHONE}?text={MESSAGE}`
+6. Form auto-reset setelah submit
+
+**URL Structure**:
+```
+https://wa.me/6281234567890?text=Halo%20%2C%20nama%20saya%20...
+         ^^^^^^^^^^^^^^^^       ^^^^^^ encoded message
+         Phone Number           Message Parameter
+```
+
+---
+
+## 📐 Responsivitas
+
+### Breakpoints
+
+| Device | Max-Width | Grid Kolom | Font Size | Padding |
+|--------|-----------|-----------|-----------|---------|
+| Desktop | 1200px+   | 3 kolom   | 1rem (16px) | 2rem    |
+| Tablet  | 980px     | 2 kolom   | 0.95rem | 1.5rem  |
+| Mobile  | 640px     | 1 kolom   | 0.9rem  | 1rem    |
+
+### CSS Media Queries
+
+```css
+/* Tablet (980px dan ke bawah) */
+@media (max-width: 980px) {
+  .cards .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Reduced padding, adjusted font sizes */
+}
+
+/* Mobile (640px dan ke bawah) */
+@media (max-width: 640px) {
+  .cards .grid {
+    grid-template-columns: 1fr;
+  }
+  /* Single column, minimal padding */
+}
+```
+
+### Testing Responsive
+
+1. **Browser DevTools**: F12 → Toggle Device Toolbar (Ctrl+Shift+M)
+2. **Actual Devices**: Test di real phone/tablet untuk akurasi
+3. **Breakpoint Points**: Desktop (1200px), Tablet (980px), Mobile (640px)
+
+---
+
+## 🎨 Animasi & Efek
+
+### 1. Typing Animation (Hero Title)
+
+**Duration**: 3 detik
+**Easing**: Linear
+**Files**: [src/App.css](src/App.css) (keyframes typing, blink-caret)
+
+```css
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(255,255,255,0.75); }
+}
+
+.hero h1 {
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  border-right: 3px solid rgba(255,255,255,0.75);
+  overflow: hidden;
+  white-space: nowrap;
+}
+```
+
+### 2. Floating Cards Animation
+
+**Duration**: 2 detik
+**Direction**: Up-down loop
+**Files**: [src/App.css](src/App.css) (keyframes float)
+
+```css
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.card {
+  animation: float 2s ease-in-out infinite;
+}
+```
+
+### 3. Pulse Animation (Location Icon)
+
+**Duration**: 1.2 detik
+**Effect**: Scale dan opacity change
+**Files**: [src/App.css](src/App.css) (keyframes pulse)
+
+```css
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.location-icon {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+```
+
+### 4. Parallax Background
+
+**Technique**: `background-attachment: fixed`
+**Effect**: Background tetap saat scroll, menciptakan depth
+
+```css
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.parallax::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+```
+
+### 5. Smooth Hover Effects pada Cards
+
+**Duration**: 0.3 detik
+**Transform**: Scale + shadow
+**Files**: [src/App.css](src/App.css) (.card:hover)
+
+```css
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+```
+
+---
+
+## 🌐 Deployment
+
+### Option 1: Vercel (Recommended)
+
+1. Push code ke GitHub repository
+2. Go to [vercel.com](https://vercel.com) → Sign up
+3. Click "Import Project" → Select GitHub repo
+4. Vercel auto-detect React → Click Deploy
+5. Domain akan assigned otomatis (e.g., `myapp-landingweb.vercel.app`)
+
+### Option 2: Netlify
+
+1. Push code ke GitHub repository
+2. Go to [netlify.com](https://netlify.com) → Sign up
+3. Click "New site from Git" → Connect GitHub
+4. Build command: `npm run build`
+5. Publish directory: `build`
+6. Click Deploy
+
+### Option 3: Traditional Hosting (cPanel, DirectAdmin, etc.)
+
+1. Build production:
+   ```bash
+   npm run build
+   ```
+
+2. Upload `build/` folder contents ke hosting via FTP/File Manager
+
+3. Set index.html sebagai default document
+
+4. Configure web server untuk handle React Router (if needed later):
+   - Redirect `/` routes ke `index.html`
+
+### Option 4: Docker + Cloud (AWS, GCP, Azure)
+
+1. Create `Dockerfile`:
+   ```dockerfile
+   FROM node:18-alpine AS build
+   WORKDIR /app
+   COPY package*.json ./
+   RUN npm install
+   COPY . .
+   RUN npm run build
+
+   FROM nginx:alpine
+   COPY --from=build /app/build /usr/share/nginx/html
+   COPY nginx.conf /etc/nginx/conf.d/default.conf
+   EXPOSE 80
+   CMD ["nginx", "-g", "daemon off;"]
+   ```
+
+2. Build & push ke container registry
+3. Deploy ke cloud platform
+
+---
+
+## 🌍 Browser Support
+
+| Browser | Versi Minimum | Status |
+|---------|---------------|--------|
+| Chrome  | 90+          | ✅ Full support |
+| Firefox | 88+          | ✅ Full support |
+| Safari  | 14+          | ✅ Full support |
+| Edge    | 90+          | ✅ Full support |
+| Opera   | 76+          | ✅ Full support |
+| IE 11   | N/A          | ❌ Not supported |
+
+**CSS Features Used yang require modern browser**:
+- CSS Grid
+- CSS Variables (custom properties)
+- CSS Animations
+- Flexbox
+- ES6 JavaScript
+
+---
+
+## ❓ FAQ
+
+### Q: Bagaimana mengubah logo perusahaan?
+**A**: Logo tidak ada di landing page saat ini. Untuk menambahkan, edit `src/App.js` di section hero dan tambahkan `<img />` tag. Atau edit `public/index.html` untuk favicon.
+
+### Q: Apakah ada database backend?
+**A**: Tidak. Ini static landing page pure React. Form WhatsApp mengirim langsung ke WhatsApp tanpa menyimpan di database. Untuk menyimpan submitted forms, perlu tambah backend (Node.js, Firebase, dll).
+
+### Q: Bagaimana SEO optimization?
+**A**: Basic SEO adalah title di `public/index.html`. Untuk advanced SEO:
+1. Install `react-helmet` package
+2. Tambah meta tags dinamis per page
+3. Create sitemap.xml
+4. Submit ke Google Search Console
+5. Optimize image sizes
+6. Enable gzip compression
+
+### Q: Apa itu "boxed layout"?
+**A**: Mode layout dimana konten terbatas pada lebar maksimal 1080px dengan margin otomatis (centered). Berbeda dengan fullscreen yang konten penuh 100% width.
+
+### Q: Bagaimana cara menambah section baru?
+**A**: Edit `src/App.js`:
+1. Create constant array dengan data section
+2. Tambah JSX section baru
+3. Styling di `src/App.css` dengan selector sesuai (e.g., `#newsection`)
+4. Add responsive styling di media queries
+
+### Q: Kenapa animasi tidak smooth di mobile?
+**A**: Mobile devices punya resources terbatas. Solusi:
+1. Reduce animation complexity
+2. Use CSS transforms instead of position changes
+3. Enable GPU acceleration: `will-change: transform;`
+4. Test di actual device vs DevTools
+
+### Q: Bagaimana cara add dark mode sesuai system preference?
+**A**: Tambah di `src/App.js`:
+```javascript
+useEffect(() => {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setTheme('dark');
+  }
+}, []);
+```
+
+### Q: Apakah bisa add Google Analytics?
+**A**: Ya, install `react-ga` package atau tambah Google Analytics script di `public/index.html`:
+```html
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+```
+
+---
+
+## 📞 Support & Contact
+
+**Untuk pertanyaan atau support**, hubungi:
+- **WhatsApp**: +6281234567890
+- **Email**: via form di website
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dibuat untuk **Mitra Semesta Persada**. 
+
+© 2024 Mitra Semesta Persada. All rights reserved.
+
+---
+
+## 🙏 Terima Kasih
+
+Terima kasih telah menggunakan landing page Mitra Semesta Persada. Kami komitmen memberikan solusi teknologi terbaik untuk bisnis Anda.

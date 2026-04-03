@@ -48,45 +48,45 @@ function App() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    
+
     const { nama, email, pesan } = formData;
     if (!nama || !email || !pesan) {
       alert('Mohon isi semua field');
       return;
     }
-    
+
     const message = `Halo, nama saya ${nama}. Email: ${email}. Pesan: ${pesan}`;
     const waLink = `https://wa.me/6281234567890?text=${encodeURIComponent(message)}`;
     window.open(waLink, '_blank');
-    
+
     setFormData({ nama: '', email: '', pesan: '' });
   };
 
   const services = [
-    {icon: '💡', title: 'Solusi Digital', text: 'Pengembangan software custom, aplikasi web dan mobile.'},
-    {icon: '☁️', title: 'Cloud & Infrastruktur', text: 'Migrasi cloud, manajemen server, dan DevOps otomatis.'},
-    {icon: '🔒', title: 'Keamanan Siber', text: 'Audit sistem, penetration testing, dan proteksi data.'},
-    {icon: '🤖', title: 'AI & Otomasi', text: 'Machine learning, analytics, dan robot process automation.'},
-    {icon: '📊', title: 'Data Analytics', text: 'Business intelligence, dashboard, dan insight berbasis data.'},
-    {icon: '🔗', title: 'Integrasi Sistem', text: 'API development, middleware, dan sistem enterprise.'},
+    { icon: '💡', title: 'Solusi Digital', text: 'Pengembangan software custom, aplikasi web dan mobile.' },
+    { icon: '☁️', title: 'Cloud & Infrastruktur', text: 'Migrasi cloud, manajemen server, dan DevOps otomatis.' },
+    { icon: '🔒', title: 'Keamanan Siber', text: 'Audit sistem, penetration testing, dan proteksi data.' },
+    { icon: '🤖', title: 'AI & Otomasi', text: 'Machine learning, analytics, dan robot process automation.' },
+    { icon: '📊', title: 'Data Analytics', text: 'Business intelligence, dashboard, dan insight berbasis data.' },
+    { icon: '🔗', title: 'Integrasi Sistem', text: 'API development, middleware, dan sistem enterprise.' },
   ];
 
   const portfolio = [
-    {logo: '🖥️', title: 'Sistem ERP', desc: 'ERP untuk manufaktur skala menengah hingga besar.'},
-    {logo: '📱', title: 'Aplikasi Mobile', desc: 'Aplikasi Android/iOS untuk layanan fintech & healthtech.'},
-    {logo: '🛍️', title: 'E-commerce', desc: 'Platform marketplace, payment gateway, dan analytics.'},
-    {logo: '🏥', title: 'Sistem Kesehatan', desc: 'Elektronik health record, telemedicine, dan IoT medis.'},
-    {logo: '🏦', title: 'Fintech Platform', desc: 'Digital banking, payment processing, dan crypto wallet.'},
-    {logo: '🎓', title: 'E-Learning', desc: 'Platform pembelajaran online, LMS, dan virtual classroom.'},
+    { logo: '🖥️', title: 'Sistem ERP', desc: 'ERP untuk manufaktur skala menengah hingga besar.' },
+    { logo: '📱', title: 'Aplikasi Mobile', desc: 'Aplikasi Android/iOS untuk layanan fintech & healthtech.' },
+    { logo: '🛍️', title: 'E-commerce', desc: 'Platform marketplace, payment gateway, dan analytics.' },
+    { logo: '🏥', title: 'Sistem Kesehatan', desc: 'Elektronik health record, telemedicine, dan IoT medis.' },
+    { logo: '🏦', title: 'Fintech Platform', desc: 'Digital banking, payment processing, dan crypto wallet.' },
+    { logo: '🎓', title: 'E-Learning', desc: 'Platform pembelajaran online, LMS, dan virtual classroom.' },
   ];
 
   const products = [
-    {icon: '📊', name: 'MitraBI', detail: 'Business Intelligence & dashboard interaktif real-time.'},
-    {icon: '📦', name: 'MitraFlow', detail: 'Automasi workflow dan integrasi ERP/CRM.'},
-    {icon: '💼', name: 'MitraSecure', detail: 'Solusi IAM, SSO, dan manajemen risiko TI.'},
-    {icon: '🌐', name: 'MitraWeb', detail: 'Framework web modern, PWA, dan headless CMS.'},
-    {icon: '📱', name: 'MitraMobile', detail: 'SDK mobile cross-platform, hybrid apps.'},
-    {icon: '☁️', name: 'MitraCloud', detail: 'Managed cloud services, serverless, dan edge computing.'},
+    { icon: '📊', name: 'MitraBI', detail: 'Business Intelligence & dashboard interaktif real-time.' },
+    { icon: '📦', name: 'MitraFlow', detail: 'Automasi workflow dan integrasi ERP/CRM.' },
+    { icon: '💼', name: 'MitraSecure', detail: 'Solusi IAM, SSO, dan manajemen risiko TI.' },
+    { icon: '🌐', name: 'MitraWeb', detail: 'Framework web modern, PWA, dan headless CMS.' },
+    { icon: '📱', name: 'MitraMobile', detail: 'SDK mobile cross-platform, hybrid apps.' },
+    { icon: '☁️', name: 'MitraCloud', detail: 'Managed cloud services, serverless, dan edge computing.' },
   ];
 
   const pricingPlans = [
@@ -124,9 +124,10 @@ function App() {
     }
 
     try {
-      const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+      // Bersihkan slash di akhir apiBase jika ada
+      const apiBase = (process.env.REACT_APP_API_URL || 'http://localhost:4000').replace(/\/$/, "");
       const timestamp = new Date().toISOString();
-      
+
       // ========== PAYLOAD YANG AKAN DIKIRIM ==========
       const payloadData = {
         packageId: plan.id,
@@ -142,10 +143,13 @@ function App() {
       console.log('%cPayload (JSON):', 'color: #28a745; font-weight: bold;');
       console.log(JSON.stringify(payloadData, null, 2));
 
-      // ========== KIRIM REQUEST ==========
+      // Gunakan URL yang bersih tanpa double slash
       const response = await fetch(`${apiBase}/api/midtrans/create-transaction`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify(payloadData),
       });
 
@@ -325,7 +329,7 @@ function App() {
           ))}
         </div>
         {orderStatus && <p className="order-status">{orderStatus}</p>}
-        <p className="section-desc" style={{marginTop: '0.8rem', fontSize: '0.9rem'}}>
+        <p className="section-desc" style={{ marginTop: '0.8rem', fontSize: '0.9rem' }}>
           Untuk integrasi penuh, siapkan endpoint backend `/api/midtrans/create-transaction` yang mengembalikan `token` Snap.
         </p>
       </section>
@@ -341,10 +345,10 @@ function App() {
             <form onSubmit={handleFormSubmit}>
               <label>
                 Nama
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="nama"
-                  placeholder="Nama Anda" 
+                  placeholder="Nama Anda"
                   value={formData.nama}
                   onChange={handleFormChange}
                   required
@@ -352,10 +356,10 @@ function App() {
               </label>
               <label>
                 Email
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   name="email"
-                  placeholder="email@contoh.com" 
+                  placeholder="email@contoh.com"
                   value={formData.email}
                   onChange={handleFormChange}
                   required
@@ -363,10 +367,10 @@ function App() {
               </label>
               <label>
                 Pesan
-                <textarea 
-                  rows="4" 
+                <textarea
+                  rows="4"
                   name="pesan"
-                  placeholder="Tuliskan kebutuhan IT Anda" 
+                  placeholder="Tuliskan kebutuhan IT Anda"
                   value={formData.pesan}
                   onChange={handleFormChange}
                   required

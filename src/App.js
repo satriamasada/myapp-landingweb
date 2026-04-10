@@ -238,11 +238,11 @@ function App() {
           <a href="#contact" onClick={() => setIsMenuOpen(false)}>Kontak</a>
         </div>
         <div className="nav-controls">
-          <button title={layout === 'full' ? 'Switch to Boxed' : 'Switch to Fullscreen'} onClick={() => setLayout(layout === 'full' ? 'boxed' : 'full')}>
+          <button 
+            title={layout === 'full' ? 'Switch to Boxed' : 'Switch to Fullscreen'} 
+            onClick={() => setLayout(layout === 'full' ? 'boxed' : 'full')}
+          >
             {layout === 'full' ? '⊡' : '⛶'}
-          </button>
-          <button title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-            {theme === 'light' ? '☽' : '☀'}
           </button>
         </div>
       </nav>
@@ -251,7 +251,24 @@ function App() {
         <div className="hero-content">
           <h1>Mitra Solusi Teknologi Anda</h1>
           <p>Kami membantu bisnis tumbuh dengan transformasi digital dan sistem cerdas.</p>
-          <a className="cta" href="#contact">Hubungi Kami Sekarang</a>
+          <div className="hero-cta-group">
+            <a className="cta" href="#contact">Hubungi Kami Sekarang</a>
+            
+            {/* Premium Theme Switch */}
+            <div className="theme-switch-wrapper">
+              <span>{theme === 'light' ? 'Light Mode' : 'Dark Mode'}</span>
+              <label className="theme-switch">
+                <input 
+                  type="checkbox" 
+                  checked={theme === 'dark'} 
+                  onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')} 
+                />
+                <span className="slider round">
+                  <i className={`fas ${theme === 'light' ? 'fa-sun' : 'fa-moon'}`}></i>
+                </span>
+              </label>
+            </div>
+          </div>
         </div>
       </section>
 

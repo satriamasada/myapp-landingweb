@@ -114,6 +114,7 @@ function App() {
   ];
 
   const [orderStatus, setOrderStatus] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleOrder = async (plan) => {
     setOrderStatus(`Memproses order ${plan.title} (Rp ${plan.price.toLocaleString('id-ID')}) ...`);
@@ -217,13 +218,24 @@ function App() {
 
   return (
     <div className={`landing ${layout}-layout ${theme}-theme`}>
-      <nav className="navbar">
+      <nav className={`navbar ${isMenuOpen ? 'menu-open' : ''}`}>
         <div className="brand">Mitra Semesta Persada</div>
-        <div className="nav-links">
-          <a href="#about">Tentang Kami</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#products">Produk</a>
-          <a href="#contact">Kontak</a>
+        
+        <button 
+          className="menu-toggle" 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+
+        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+          <a href="#about" onClick={() => setIsMenuOpen(false)}>Tentang Kami</a>
+          <a href="#portfolio" onClick={() => setIsMenuOpen(false)}>Portfolio</a>
+          <a href="#products" onClick={() => setIsMenuOpen(false)}>Produk</a>
+          <a href="#contact" onClick={() => setIsMenuOpen(false)}>Kontak</a>
         </div>
         <div className="nav-controls">
           <button title={layout === 'full' ? 'Switch to Boxed' : 'Switch to Fullscreen'} onClick={() => setLayout(layout === 'full' ? 'boxed' : 'full')}>
@@ -237,12 +249,6 @@ function App() {
 
       <section className="hero parallax" id="home">
         <div className="hero-content">
-          <div className="floating-card hero-card">
-            <i className="fa-solid fa-rocket" />
-            <h4>Start Up Ready</h4>
-            <p>Mengakselerasi ide teknologi dengan cepat dan aman.</p>
-            <a className="small-cta" href="#services">Kunjungi Layanan</a>
-          </div>
           <h1>Mitra Solusi Teknologi Anda</h1>
           <p>Kami membantu bisnis tumbuh dengan transformasi digital dan sistem cerdas.</p>
           <a className="cta" href="#contact">Hubungi Kami Sekarang</a>
